@@ -27,7 +27,7 @@
 		</table>
 	</div>
 
-<div class="tab" style="margin-top: 10px;">
+<div class="tab" style="margin-top: 10px; display: none;">
 	<button class="tablinks" onclick="openLogin(event, 'KV')" id="defaultOpen">Voucher Code</button>
 	<button class="tablinks" onclick="openLogin(event, 'UP')">User Password</button>
 </div>
@@ -43,14 +43,14 @@ $(if chap-id)
 
 	<script type="text/javascript" src="/md5.js"></script>
 	<script type="text/javascript">
-	<!--
-	    function doLoginkv() {
-		document.sendinkv.username.value = document.loginkv.usernamekv.value;
-		document.sendinkv.password.value = hexMD5('$(chap-id)' + document.loginkv.usernamekv.value + '$(chap-challenge)');
-		document.sendinkv.submit();
-		return false;
-	    }
-	//-->
+
+		function doLoginkv() {
+			document.sendinkv.username.value = document.loginkv.usernamekv.value;
+			document.sendinkv.password.value = hexMD5('$(chap-id)' + document.loginkv.usernamekv.value + '$(chap-challenge)');
+			document.sendinkv.submit();
+			return false;
+		}
+
 	</script>
 $(endif)
 
@@ -87,7 +87,7 @@ $(endif)
 	</table>
 </div>
 
-<div id="UP" class="tabcontent">
+<!-- <div id="UP" class="tabcontent">
 $(if chap-id)
 	<form name="sendinup" action="$(link-login-only)" method="post">
 		<input type="hidden" name="username" />
@@ -98,14 +98,14 @@ $(if chap-id)
 
 	<script type="text/javascript" src="/md5.js"></script>
 	<script type="text/javascript">
-	<!--
-	    function doLoginup() {
-		document.sendinup.username.value = document.loginup.usernameup.value;
-		document.sendinup.password.value = hexMD5('$(chap-id)' + document.loginup.passwordup.value + '$(chap-challenge)');
-		document.sendinup.submit();
-		return false;
-	    }
-	//-->
+
+		function doLoginup() {
+			document.sendinup.username.value = document.loginup.usernameup.value;
+			document.sendinup.password.value = hexMD5('$(chap-id)' + document.loginup.passwordup.value + '$(chap-challenge)');
+			document.sendinup.submit();
+			return false;
+		}
+
 	</script>
 $(endif)
 
@@ -141,7 +141,7 @@ $(endif)
 		</td>
 		</tr>
 	</table>
-</div>
+</div> -->
 
 </div>
 <script>
