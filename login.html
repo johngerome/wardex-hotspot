@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>GNHS Hotspot Login</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="expires" content="-1" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"/>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="d3.v3.min.js"></script>
+</head>
+
+<body>
+
+
+<div class="main" style="align-content: center;">
+
+	<div>
+		<table width="100%" style="margin-top: 10px; margin-bottom: 20px;">
+			<tr>
+				<td align="center"><img src="img/logo.png" alt="kemangi 41" style="border-radius: 5px" alt="sponsor" height="100%" width="200"/></td>
+			<!-- </tr>
+				<td><div style="color: white; font-size: 14px; text-align: center;">Langganan WiFi Hub: WA 0822</div></td>
+			</tr> -->
+		</table>
+	</div>
+
+<div class="tab" style="margin-top: 10px;">
+	<button class="tablinks" onclick="openLogin(event, 'KV')" id="defaultOpen">Voucher Code</button>
+	<button class="tablinks" onclick="openLogin(event, 'UP')">User Password</button>
+</div>
+
+<div id="KV" class="tabcontent">
+$(if chap-id)
+	<form name="sendinkv" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="$(link-orig)" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+	<!--
+	    function doLoginkv() {
+		document.sendinkv.username.value = document.loginkv.usernamekv.value;
+		document.sendinkv.password.value = hexMD5('$(chap-id)' + document.loginkv.usernamekv.value + '$(chap-challenge)');
+		document.sendinkv.submit();
+		return false;
+	    }
+	//-->
+	</script>
+$(endif)
+
+<table width="100%">
+	<table align="center">
+		<tr>
+		<td style="font-size: 14px; text-align:center;">Login Voucher Code<br />$(if trial == 'yes')Coba gratis, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">Click here</a>.$(endif)</td><br />
+		</tr>
+	</table>
+	<table align="center"class="tlogin">
+		<tr>
+		<td align="center" valign="bottom" height="70" colspan="2">
+			<form autocomplete="off" name="loginkv" action="$(link-login-only)" method="post"
+			$(if chap-id) onSubmit="return doLoginkv()" $(endif)>
+				<input type="hidden" name="dst" value="$(link-orig)" />
+				<input type="hidden" name="popup" value="true" />
+					<table width="100">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan=2><input  name="usernamekv" type="text" placeholder="Voucher Code"  onchange="updateInput(this.value)" value="$(username)"/></td>
+						</tr>
+						<tr>
+						  <td colspan=2><input id="pass" name="passwordkv" placeholder="Password" type="hidden"/></td>
+						</tr>
+						<td colspan=2 align="center";><input type="submit" class="button" value=" Login | Enter" /></td>
+					</tr>
+					$(if error)<br /><div style="color: red; font-size: 14px">Voucher Code does not match or has been used!</div>$(endif)
+					</table>
+			</form>
+		</td>
+		</tr>
+	</table>
+</div>
+
+<div id="UP" class="tabcontent">
+$(if chap-id)
+	<form name="sendinup" action="$(link-login-only)" method="post">
+		<input type="hidden" name="username" />
+		<input type="hidden" name="password" />
+		<input type="hidden" name="dst" value="$(link-orig)" />
+		<input type="hidden" name="popup" value="true" />
+	</form>
+
+	<script type="text/javascript" src="/md5.js"></script>
+	<script type="text/javascript">
+	<!--
+	    function doLoginup() {
+		document.sendinup.username.value = document.loginup.usernameup.value;
+		document.sendinup.password.value = hexMD5('$(chap-id)' + document.loginup.passwordup.value + '$(chap-challenge)');
+		document.sendinup.submit();
+		return false;
+	    }
+	//-->
+	</script>
+$(endif)
+
+<table width="100%">
+	<table align="center">
+		<tr>
+		<td style="font-size: 14px; text-align:center;">Login Username & Password<br />$(if trial == 'yes')Coba gratis, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)">Click here</a>.$(endif)</td><br />
+		</tr>
+	</table>
+	<table align="center"class="tlogin">
+		<tr>
+		<td align="center" valign="bottom" height="70" colspan="2">
+			<form autocomplete="off" name="loginup" action="$(link-login-only)" method="post"
+			$(if chap-id) onSubmit="return doLoginup()" $(endif)>
+				<input type="hidden" name="dst" value="$(link-orig)" />
+				<input type="hidden" name="popup" value="true" />
+					<table width="100">
+						<tr>
+							<td>&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan=2><input  name="usernameup" type="text" placeholder="Username" value="$(username)"/></td>
+						</tr>
+						<tr>
+							<td colspan=2><input  name="passwordup" type="password" placeholder="Password"/></td>
+						</tr>
+					<tr>
+						<td colspan=2 align="center";><input type="submit" class="button" value=" Login " /></td>
+					</tr>
+					$(if error)<br /><div style="color: red; font-size: 14px">$(error)</div>$(endif)
+					</table>
+			</form>
+		</td>
+		</tr>
+	</table>
+</div>
+
+</div>
+<script>
+function openLogin(evt, loginName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(loginName).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+<script type="text/javascript" charset="utf-8">
+            d3.text("paket-wifi.csv", function(data) {
+                var parsedCSV = d3.csv.parseRows(data);
+
+                var container = d3.select("table.tpaketwifi")
+                    .append("div")
+
+                    .selectAll("tr")
+                        .data(parsedCSV).enter()
+                        .append("tr")
+
+                    .selectAll("td")
+                        .data(function(d) { return d; }).enter()
+                        .append("td")
+                        .text(function(d) { return d; });
+            });
+</script>
+<script type="text/javascript">
+<!--
+  document.login.username.focus();
+//-->
+</script>
+</body>
+</html>
